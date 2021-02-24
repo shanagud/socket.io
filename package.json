@@ -1,5 +1,5 @@
 {
-  "name": "socket.io",
+  "name": "shana-socket.io",
   "version": "3.1.1",
   "description": "node.js realtime framework server",
   "keywords": [
@@ -33,7 +33,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/socketio/socket.io"
+    "url": "git://github.com/shanagud/socket.io.git"
   },
   "scripts": {
     "compile": "rimraf ./dist && tsc",

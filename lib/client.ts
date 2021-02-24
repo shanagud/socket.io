@@ -63,7 +63,7 @@ export class Client {
 
     this.connectTimeout = setTimeout(() => {
       if (this.nsps.size === 0) {
-        debug("no namespace joined yet, close the client");
+        debug("no namespace joined yet, close the client..");
         this.close();
       } else {
         debug("the client has already joined a namespace, nothing to do");
@@ -164,7 +164,7 @@ export class Client {
     if ("open" === this.conn.readyState) {
       debug("forcing transport close");
       this.conn.close();
-      this.onclose("forced server close");
+      this.onclose("forced server close...");
     }
   }
 

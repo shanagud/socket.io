@@ -164,7 +164,7 @@ export class Client {
     if ("open" === this.conn.readyState) {
       debug("forcing transport close");
       this.conn.close();
-      this.onclose("forced server close..");
+      this.onclose("forced server close...");
     }
   }
 

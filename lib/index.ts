@@ -608,6 +608,26 @@ export class Server extends EventEmitter {
     }
   }
 
+    /**
+   * shanaclose server connection
+   *
+   * @param [fn] optional, called as `fn([err])` on error OR all conns closed
+   * @public
+   */
+  public shanaclose(fn?: (err?: Error) => void): void {
+    for (const socket of this.sockets.sockets.values()) {
+      socket._onclose("server shutting down");
+    }
+
+    this.engine.close();
+
+    if (this.httpServer) {
+      this.httpServer.close(fn);
+    } else {
+      fn && fn();
+    }
+  }
+
   /**
    * Sets up namespace middleware.
    *

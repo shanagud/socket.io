@@ -1,4 +1,3 @@
-
 # Example with [Passport](http://www.passportjs.org/)
 
 This example shows how to retrieve the authentication context from a basic [Express](http://expressjs.com/) + [Passport](http://www.passportjs.org/) application.

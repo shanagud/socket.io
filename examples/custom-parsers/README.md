@@ -1,4 +1,3 @@
-
 # Socket.IO custom parsers
 
 Since Socket.IO version 2.0.0, you can provide your custom parser, according to the needs of your application.
@@ -25,7 +24,7 @@ $ npm i && npm start
 ## Results
 
 | bytes / packet | CONNECT packet | string | numeric | binary    |
-|----------------|----------------|--------|---------|-----------|
+| -------------- | -------------- | ------ | ------- | --------- |
 | default        | 1              | 5903   | 3904    | 43 + 1000 |
 | msgpack        | 20             | 3919   | 2646    | 1029      |
 | JSON           | 20             | 5930   | 3931    | 3625      |
@@ -34,17 +33,21 @@ $ npm i && npm start
 ## Comparison
 
 `default parser`
+
 - supports any serializable datastructure, including Blob and File
 - **but** binary payload is encoded as 2 packets
 
 `msgpack`
+
 - the size of payloads containing mostly numeric values will be greatly reduced
 - **but** rely on [ArrayBuffer](https://caniuse.com/#feat=typedarrays) in the browser (IE > 9)
 
 `JSON`
+
 - optimized
 - **but** does not support binary payloads
 
 `schemapack`
+
 - the most efficient in both speed and size
 - **but** you have to provide a schema for each packet

@@ -14,9 +14,7 @@
     "noImplicitThis": false,
     "strictPropertyInitialization": false,
     "noImplicitReturns": true,
-    "importsNotUsedAsValues": "error",
+    "importsNotUsedAsValues": "error"
   },
-  "include": [
-    "./lib/**/*"
-  ]
+  "include": ["./lib/**/*"]
 }

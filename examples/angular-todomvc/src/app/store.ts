@@ -1,10 +1,10 @@
-import { io, Socket } from "socket.io-client";
+import { io, Socket } from 'socket.io-client';
 
 export class Todo {
   completed: boolean;
   editing: boolean;
 
-  private _title: String = "";
+  private _title: String = '';
   get title() {
     return this._title;
   }
@@ -23,13 +23,17 @@ export class TodoStore {
   todos: Array<Todo>;
 
   constructor() {
-    let persistedTodos = JSON.parse(localStorage.getItem('angular2-todos') || '[]');
+    let persistedTodos = JSON.parse(
+      localStorage.getItem('angular2-todos') || '[]'
+    );
     // Normalize back into classes
-    this.todos = persistedTodos.map( (todo: {_title: String, completed: boolean}) => {
-      let ret = new Todo(todo._title);
-      ret.completed = todo.completed;
-      return ret;
-    });
+    this.todos = persistedTodos.map(
+      (todo: { _title: String; completed: boolean }) => {
+        let ret = new Todo(todo._title);
+        ret.completed = todo.completed;
+        return ret;
+      }
+    );
   }
 
   protected updateStore() {
@@ -45,7 +49,7 @@ export class TodoStore {
   }
 
   setAllTo(completed: boolean) {
-    this.todos.forEach((t: Todo) => t.completed = completed);
+    this.todos.forEach((t: Todo) => (t.completed = completed));
     this.updateStore();
   }
 
@@ -83,13 +87,20 @@ export class RemoteTodoStore extends TodoStore {
 
   constructor() {
     super();
-    this.socket = io("http://localhost:8080");
-    this.socket.on("todos", (updatedTodos: Array<Todo>) => {
+    this.socket = io('http://localhost:8080');
+    this.socket.on('todos', (updatedTodos: Array<Todo>) => {
       this.todos = updatedTodos;
     });
   }
 
   protected updateStore() {
-    this.socket.emit("update-store", this.todos.map(({ title, editing, completed }) => ({ title, editing, completed })));
+    this.socket.emit(
+      'update-store',
+      this.todos.map(({ title, editing, completed }) => ({
+        title,
+        editing,
+        completed,
+      }))
+    );
   }
 }

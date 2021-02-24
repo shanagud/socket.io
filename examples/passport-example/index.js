@@ -7,7 +7,11 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-const sessionMiddleware = session({ secret: "changeit", resave: false, saveUninitialized: false });
+const sessionMiddleware = session({
+  secret: "changeit",
+  resave: false,
+  saveUninitialized: false,
+});
 app.use(sessionMiddleware);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -37,7 +41,9 @@ app.get("/", (req, res) => {
   } else {
     console.log("unknown user");
   }
-  res.sendFile(isAuthenticated ? "index.html" : "login.html", { root: __dirname });
+  res.sendFile(isAuthenticated ? "index.html" : "login.html", {
+    root: __dirname,
+  });
 });
 
 app.post(
@@ -70,10 +76,11 @@ passport.deserializeUser((id, cb) => {
   cb(null, DUMMY_USER);
 });
 
-const io = require('socket.io')(server);
+const io = require("socket.io")(server);
 
 // convert a connect middleware to a Socket.IO middleware
-const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+const wrap = (middleware) => (socket, next) =>
+  middleware(socket.request, {}, next);
 
 io.use(wrap(sessionMiddleware));
 io.use(wrap(passport.initialize()));
@@ -83,14 +90,14 @@ io.use((socket, next) => {
   if (socket.request.user) {
     next();
   } else {
-    next(new Error('unauthorized'))
+    next(new Error("unauthorized"));
   }
 });
 
-io.on('connect', (socket) => {
+io.on("connect", (socket) => {
   console.log(`new connection ${socket.id}`);
-  socket.on('whoami', (cb) => {
-    cb(socket.request.user ? socket.request.user.username : '');
+  socket.on("whoami", (cb) => {
+    cb(socket.request.user ? socket.request.user.username : "");
   });
 
   const session = socket.request.session;

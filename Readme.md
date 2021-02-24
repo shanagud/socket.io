@@ -1,4 +1,5 @@
 # socket.io
+
 [![Run on Repl.it](https://repl.it/badge/github/socketio/socket.io)](https://repl.it/github/socketio/socket.io)
 [![Backers on Open Collective](https://opencollective.com/socketio/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/socketio/sponsors/badge.svg)](#sponsors)
 [![Build Status](https://github.com/socketio/socket.io/workflows/CI/badge.svg)](https://github.com/socketio/socket.io/actions)
@@ -29,8 +30,9 @@ Its main features are:
 #### Reliability
 
 Connections are established even in the presence of:
-  - proxies and load balancers.
-  - personal firewall and antivirus software.
+
+- proxies and load balancers.
+- personal firewall and antivirus software.
 
 For this purpose, it relies on [Engine.IO](https://github.com/socketio/engine.io), which first establishes a long-polling connection, then tries to upgrade to better transports that are "tested" on the side, like WebSocket. Please see the [Goals](https://github.com/socketio/engine.io#goals) section for more information.
 
@@ -56,10 +58,12 @@ Any serializable data structures can be emitted, including:
 Sample code:
 
 ```js
-io.on('connection', socket => {
-  socket.emit('request', /* … */); // emit an event to the socket
-  io.emit('broadcast', /* … */); // emit an event to all connected sockets
-  socket.on('reply', () => { /* … */ }); // listen to the event
+io.on("connection", (socket) => {
+  socket.emit("request" /* … */); // emit an event to the socket
+  io.emit("broadcast" /* … */); // emit an event to all connected sockets
+  socket.on("reply", () => {
+    /* … */
+  }); // listen to the event
 });
 ```
 
@@ -79,7 +83,6 @@ Within each `Namespace`, you can define arbitrary channels, called `Rooms`, that
 
 This is a useful feature to send notifications to a group of users, or to a given user connected on several devices for example.
 
-
 **Note:** Socket.IO is not a WebSocket implementation. Although Socket.IO indeed uses WebSocket as a transport when possible, it adds some metadata to each packet: the packet type, the namespace and the ack id when a message acknowledgement is needed. That is why a WebSocket client will not be able to successfully connect to a Socket.IO server, and a Socket.IO client will not be able to connect to a WebSocket server (like `ws://echo.websocket.org`) either. Please see the protocol specification [here](https://github.com/socketio/socket.io-protocol).
 
 ## Installation
@@ -98,11 +101,15 @@ The following example attaches socket.io to a plain Node.JS
 HTTP server listening on port `3000`.
 
 ```js
-const server = require('http').createServer();
-const io = require('socket.io')(server);
-io.on('connection', client => {
-  client.on('event', data => { /* … */ });
-  client.on('disconnect', () => { /* … */ });
+const server = require("http").createServer();
+const io = require("socket.io")(server);
+io.on("connection", (client) => {
+  client.on("event", (data) => {
+    /* … */
+  });
+  client.on("disconnect", () => {
+    /* … */
+  });
 });
 server.listen(3000);
 ```
@@ -123,10 +130,12 @@ to pass the `Server` to `socket.io`, and not the express application
 function. Also make sure to call `.listen` on the `server`, not the `app`.
 
 ```js
-const app = require('express')();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-io.on('connection', () => { /* … */ });
+const app = require("express")();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+io.on("connection", () => {
+  /* … */
+});
 server.listen(3000);
 ```
 
@@ -136,10 +145,12 @@ Like Express.JS, Koa works by exposing an application as a request
 handler function, but only by calling the `callback` method.
 
 ```js
-const app = require('koa')();
-const server = require('http').createServer(app.callback());
-const io = require('socket.io')(server);
-io.on('connection', () => { /* … */ });
+const app = require("koa")();
+const server = require("http").createServer(app.callback());
+const io = require("socket.io")(server);
+io.on("connection", () => {
+  /* … */
+});
 server.listen(3000);
 ```
 
@@ -150,9 +161,11 @@ register `fastify-socket.io` plugin. It will create a `decorator`
 called `io`.
 
 ```js
-const app = require('fastify')();
-app.register(require('fastify-socket.io'));
-app.io.on('connection', () => { /* … */ });
+const app = require("fastify")();
+app.register(require("fastify-socket.io"));
+app.io.on("connection", () => {
+  /* … */
+});
 app.listen(3000);
 ```
 
@@ -179,12 +192,12 @@ DEBUG=socket.io* node myapp
 ```
 npm test
 ```
+
 This runs the `gulp` task `test`. By default the test will be run with the source code in `lib` directory.
 
 Set the environmental variable `TEST_VERSION` to `compat` to test the transpiled es5-compat version of the code.
 
 The `gulp` task `test` will always transpile the source code into es5 and export to `dist` first before running the test.
-
 
 ## Backers
 
@@ -221,7 +234,6 @@ Support us with a monthly donation and help us continue our activities. [[Become
 <a href="https://opencollective.com/socketio/backer/28/website" target="_blank"><img src="https://opencollective.com/socketio/backer/28/avatar.svg"></a>
 <a href="https://opencollective.com/socketio/backer/29/website" target="_blank"><img src="https://opencollective.com/socketio/backer/29/avatar.svg"></a>
 
-
 ## Sponsors
 
 Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/socketio#sponsor)]
@@ -256,7 +268,6 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 <a href="https://opencollective.com/socketio/sponsor/27/website" target="_blank"><img src="https://opencollective.com/socketio/sponsor/27/avatar.svg"></a>
 <a href="https://opencollective.com/socketio/sponsor/28/website" target="_blank"><img src="https://opencollective.com/socketio/sponsor/28/avatar.svg"></a>
 <a href="https://opencollective.com/socketio/sponsor/29/website" target="_blank"><img src="https://opencollective.com/socketio/sponsor/29/avatar.svg"></a>
-
 
 ## License
 

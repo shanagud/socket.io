@@ -608,7 +608,7 @@ export class Server extends EventEmitter {
     }
   }
 
-    /**
+  /**
    * shanaclose server connection
    *
    * @param [fn] optional, called as `fn([err])` on error OR all conns closed

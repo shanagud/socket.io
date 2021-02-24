@@ -1,19 +1,19 @@
-const io = require('socket.io')();
+const io = require("socket.io")();
 
-io.on('connection', socket => {
+io.on("connection", (socket) => {
   console.log(`connect: ${socket.id}`);
 
-  socket.on('disconnect', () => {
+  socket.on("disconnect", () => {
     console.log(`disconnect: ${socket.id}`);
   });
 });
 
 io.listen(3000, {
   cors: {
-    origin: ["http://localhost:19006"]
-  }
+    origin: ["http://localhost:19006"],
+  },
 });
 
 setInterval(() => {
-  io.emit('message', new Date().toISOString());
+  io.emit("message", new Date().toISOString());
 }, 1000);

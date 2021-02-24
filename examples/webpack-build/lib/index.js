@@ -1,12 +1,11 @@
+import io from "socket.io-client";
 
-import io from 'socket.io-client';
+const socket = io("http://localhost:3000");
 
-const socket = io('http://localhost:3000');
+console.log("init");
 
-console.log('init');
+socket.on("connect", onConnect);
 
-socket.on('connect', onConnect);
-
-function onConnect(){
-  console.log('connect ' + socket.id);
+function onConnect() {
+  console.log("connect " + socket.id);
 }

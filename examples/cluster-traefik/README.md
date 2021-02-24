@@ -1,4 +1,3 @@
-
 # Socket.IO Chat with traefik & [redis](https://redis.io/)
 
 A simple chat demo for Socket.IO

@@ -1,4 +1,3 @@
-
 # Socket.IO Chat with haproxy & redis
 
 A simple chat demo for socket.io
@@ -25,7 +24,7 @@ $ docker-compose stop server-george
 ## Features
 
 - Multiple users can join a chat room by each entering a unique username
-on website load.
+  on website load.
 - Users can type chat messages to the chat room.
 - A notification is sent to all users when a user joins or leaves
-the chatroom.
+  the chatroom.

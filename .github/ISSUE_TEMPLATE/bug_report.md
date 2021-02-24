@@ -1,10 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: 'bug'
-assignees: ''
-
+title: ""
+labels: "bug"
+assignees: ""
 ---
 
 **Describe the bug**
@@ -16,7 +15,7 @@ Please fill the following code example:
 
 Socket.IO server version: `x.y.z`
 
-*Server*
+_Server_
 
 ```js
 import { Server } from "socket.io";
@@ -34,7 +33,7 @@ io.on("connection", (socket) => {
 
 Socket.IO client version: `x.y.z`
 
-*Client*
+_Client_
 
 ```js
 import { io } from "socket.io-client";
@@ -54,8 +53,9 @@ socket.on("disconnect", () => {
 A clear and concise description of what you expected to happen.
 
 **Platform:**
- - Device: [e.g. Samsung S8]
- - OS: [e.g. Android 9.2]
+
+- Device: [e.g. Samsung S8]
+- OS: [e.g. Android 9.2]
 
 **Additional context**
 Add any other context about the problem here.

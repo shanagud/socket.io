@@ -1,4 +1,3 @@
-
 # Socket.IO WebPack build
 
 A sample Webpack build for the browser.

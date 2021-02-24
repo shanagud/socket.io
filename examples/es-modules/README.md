@@ -1,4 +1,3 @@
-
 # Example with [ES modules](https://nodejs.org/api/esm.html)
 
 ## How to use

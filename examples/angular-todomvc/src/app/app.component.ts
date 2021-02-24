@@ -4,7 +4,7 @@ import { RemoteTodoStore, Todo } from './store';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   todoStore: RemoteTodoStore;
@@ -46,7 +46,7 @@ export class AppComponent {
     this.todoStore.toggleCompletion(todo);
   }
 
-  remove(todo: Todo){
+  remove(todo: Todo) {
     this.todoStore.remove(todo);
   }
 

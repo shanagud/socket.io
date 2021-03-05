@@ -1,13 +1,12 @@
 name: CI
 
 on:
-  push:
   pull_request:
-  schedule:
-    - cron: '0 0 * * 0'
+    branches:
+      - master
 
 jobs:
-  test-node:
+  build-node:
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,6 +27,3 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
-      - run: npm test
-        env:
-          CI: true
